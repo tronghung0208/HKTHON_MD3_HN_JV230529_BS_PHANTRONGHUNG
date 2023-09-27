@@ -83,13 +83,13 @@ public class BookManagement {
             System.out.println("Số lượng sản phẩm phải lớn hơn 0");
         }
     }
-
+// SẮP XẾP
     public static void displaySortedProductsByAscendingProfit(Book[] arrBooks, int currentIndex) {
         // Sử dụng thuật toán sắp xếp chèn (Insertion Sort) để sắp xếp mảng theo lợi nhuận tăng dần.
         for (int i = 1; i < currentIndex; i++) {
             Book key = arrBooks[i];
             int j = i - 1;
-            while (j >= 0 && arrBooks[j].interestBook() > key.interestBook()) { // Thay đổi dấu '<' thành '>'
+            while (j >= 0 && arrBooks[j].interestBook() > key.interestBook()) {
                 arrBooks[j + 1] = arrBooks[j];
                 j = j - 1;
             }
@@ -103,6 +103,7 @@ public class BookManagement {
         }
     }
 
+    // PHƯƠNG THỨC TÌM INDEX
     public static int searchIndexBook(Book[] books, int bookId) {
         int index = -1;
         for (int i = 0; i < books.length; i++) {
@@ -113,7 +114,7 @@ public class BookManagement {
         }
         return index;
     }
-
+// XÓA SÁCH
     public static void deleteBook() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Nhập mã sách bạn muốn xóa");
@@ -131,6 +132,7 @@ public class BookManagement {
         }
     }
 
+    // TÌM THEO TÊN
     public static void searchNameBook(Book[] books) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Nhập vào tên sách");
@@ -152,13 +154,15 @@ public class BookManagement {
             System.out.println("Tên sách bạn muốn tìm kiếm không tồn tại");
         }
     }
+
+    // UPDATE LẠI THÔNG TIN
     public static void updateBook(Scanner sc){
         System.out.println("Nhập vào mã sách");
         int bookId=Integer.parseInt(sc.nextLine());
         int indexUpdate=searchIndexBook(books,bookId);
 
         if (indexUpdate >= 0) {
-            // Học sinh tồn tại trong danh sách
+
             System.out.println("Nhập thông tin mới cho sách:");
             books[indexUpdate].inputData(sc, books, indexUpdate); // Gọi hàm để nhập thông tin mới
             System.out.println("Thông tin sách đã được cập nhật.");
