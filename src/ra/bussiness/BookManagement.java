@@ -46,11 +46,10 @@ public class BookManagement {
                     searchNameBook(books);
                     break;
                 case 6:
+                    updateBook(sc);
                     break;
                 case 7:
                     System.exit(0);
-
-
                 default:
                     System.out.println("Vui lòng nhập từ 1-9");
             }
@@ -153,4 +152,19 @@ public class BookManagement {
             System.out.println("Tên sách bạn muốn tìm kiếm không tồn tại");
         }
     }
+    public static void updateBook(Scanner sc){
+        System.out.println("Nhập vào mã sách");
+        int bookId=Integer.parseInt(sc.nextLine());
+        int indexUpdate=searchIndexBook(books,bookId);
+
+        if (indexUpdate >= 0) {
+            // Học sinh tồn tại trong danh sách
+            System.out.println("Nhập thông tin mới cho sách:");
+            books[indexUpdate].inputData(sc, books, indexUpdate); // Gọi hàm để nhập thông tin mới
+            System.out.println("Thông tin sách đã được cập nhật.");
+        } else {
+            System.out.println("Sách bạn muốn sửa không có trong danh sách");
+        }
+    }
+
 }
